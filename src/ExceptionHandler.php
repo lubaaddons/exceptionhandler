@@ -2,7 +2,7 @@
 
 namespace Luba;
 
-use View;
+use Luba\Framework\View, Log;
 
 class ExceptionHandler
 {
@@ -12,13 +12,11 @@ class ExceptionHandler
 		
 		if (defined('EXCEPTIONS_TEMPLATE'))
 			$template = EXCEPTIONS_TEMPLATE;
-		else
-			$template = 'exceptions';
 
-		if (file_exists(view_path("$template.lb")))
+		if (isset($template) && file_exists(view_path("$template.lb")))
 			$view = new View($template, ['exception' => $exception]);
 		else
-			$view = new View('exceptions', ['exception' => $exception], __DIR__);
+			$view = new View('exceptions', ['exception' => $exception], __DIR__ . '/');
 
 		echo $view->render();
 		die;

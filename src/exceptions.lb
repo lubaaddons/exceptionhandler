@@ -5,7 +5,7 @@
 	<head>
 
 		<title><< http_response_code() >></title>
-
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
@@ -13,10 +13,79 @@
 		<main>
 
 			<div class="exception_main">
+
+				<h1><< $exception->getMessage() >></h1>
+			</div>
+
+			<div class="stack_trace">
+
+				<foreach $exception->getTrace() as $trace>
+					<section>
+
+						<table>
+							<tbody>
+								<if isset($trace['class'])>
+									<tr>
+										<td class="col1">Class:</td>
+										<td> << $trace['class'] >> </td>
+									</tr>
+								</if>
+								<if isset($trace['function'])>
+									<tr>
+										<td class="col1">Function:</td>
+										<td><< $trace['function'] >></td>
+									</tr>
+								</if>
+								<if isset($trace['file'])>
+									<tr>
+										<td class="col1">File:</td>
+										<td><< $trace['file'] >></td>
+									</tr>
+								</if>
+								<if isset($trace['line'])>
+									<tr>
+										<td class="col1">Line:</td>
+										<td><< $trace['line'] >></td>
+									</tr>
+								</if>
+							</tbody>
+						</table>
+
+					</section>
+
+				</foreach>
+
 			</div>
 
 		</main>
 
 	</body>
+
+	<style>
+
+	main {
+		width:1200px;
+		margin:auto;
+		font-family:"Open Sans";
+	}
+	h1 {
+		font-size:25px;
+	}
+	section {
+		padding:10px 0;
+		width:100%;
+		border-bottom:1px solid grey;
+	}
+	section:first-child {
+		border-top:1px solid grey;
+	}
+	.exception_main {
+		margin-bottom:40px;
+	}
+	.col1 {
+		width:100px;
+	}
+
+	</style>
 
 </html>
