@@ -1,0 +1,16 @@
+{
+    "name": "lubaaddons/exceptionhandler",
+    "description": "A better exception handler for Luba",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Flo Stone"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Luba\\": "src/"
+        }
+    }
+}
+
